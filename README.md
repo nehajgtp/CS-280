@@ -5,5 +5,6 @@ Conceptual study of programming language syntax, semantics and implementation. C
 Programming Assignments:
 1. Cryptography Assignment
 2. Lexical Analyzer
+(Coming Soon)
 3. Parser
 4. Interpreter
