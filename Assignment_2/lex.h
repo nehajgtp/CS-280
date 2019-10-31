@@ -10,40 +10,57 @@
 
 #include <string>
 #include <iostream>
-using std::string;
 using std::istream;
 using std::ostream;
+using std::string;
 
-enum Token {
-		// keywords
-	PRINT, LET, IF, LOOP, BEGIN, END,
+enum Token
+{
+	// keywords
+	PRINT,
+	LET,
+	IF,
+	LOOP,
+	BEGIN,
+	END,
 
-		// an identifier
+	// an identifier
 	ID,
 
-		// an integer and string constant
-	INT, STR,
+	// an integer and string constant
+	INT,
+	STR,
 
-		// the operators, parens, semicolon
-	PLUS, MINUS, STAR, SLASH, BANG, LPAREN, RPAREN, SC,
-		// any error returns this token
+	// the operators, parens, semicolon
+	PLUS,
+	MINUS,
+	STAR,
+	SLASH,
+	BANG,
+	LPAREN,
+	RPAREN,
+	SC,
+	// any error returns this token
 	ERR,
 
-		// when completed (EOF), return this token
+	// when completed (EOF), return this token
 	DONE
 };
 
-class Lex {
-	Token	tok;
-	string	lexeme;
-	int		lnum;
+class Lex
+{
+	Token tok;
+	string lexeme;
+	int lnum;
 
 public:
-	Lex() {
+	Lex()
+	{
 		tok = ERR;
 		lnum = -1;
 	}
-	Lex(Token tok, string lexeme, int line) {
+	Lex(Token tok, string lexeme, int line)
+	{
 		this->tok = tok;
 		this->lexeme = lexeme;
 		this->lnum = line;
@@ -52,14 +69,13 @@ public:
 	bool operator==(const Token tok) const { return this->tok == tok; }
 	bool operator!=(const Token tok) const { return this->tok != tok; }
 
-	Token	GetToken() const { return tok; }
-	string	GetLexeme() const { return lexeme; }
-	int		GetLinenum() const { return lnum; }
+	Token GetToken() const { return tok; }
+	string GetLexeme() const { return lexeme; }
+	int GetLinenum() const { return lnum; }
 };
 
-extern ostream& operator<<(ostream& out, const Lex& tok);
+extern ostream &operator<<(ostream &out, const Lex &tok);
 
-extern Lex getNextToken(istream& in, int& linenum);
-
+extern Lex getNextToken(istream &in, int &linenum);
 
 #endif /* LEX_H_ */
