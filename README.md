@@ -4,10 +4,10 @@ Conceptual study of programming language syntax, semantics and implementation. C
 
 Programming Assignments:
 1. Cryptography Assignment
-*Can perform a rot13 substitution2
-*Perform a caesar encryption given a dictionary
-*Perform a caesar decryption given a dictionary
-*Create a random caesar cipher dictionary
+  *Can perform a rot13 substitution2
+  *Perform a caesar encryption given a dictionary
+  *Perform a caesar decryption given a dictionary
+  *Create a random caesar cipher dictionary
 2. Lexical Analyzer
 3. Parser
 4. Interpreter
