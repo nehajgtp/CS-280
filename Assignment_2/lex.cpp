@@ -37,11 +37,11 @@ Lex idkw(string lexeme, int linenum)
 {
     Token tt = ID;
     auto kIt = kwmap.find(lexeme);
-    if (kIt != kwmap.end()) {
+    if (kIt != kwmap.end())
+    {
         tt = kIt->second;
     }
-        
-    
+
     return Lex(tt, lexeme, linenum);
 }
 
@@ -199,7 +199,7 @@ Lex getNextToken(istream &in, int &linenum)
 
             else if (c == '"')
             {
-                lexeme = lexeme.substr(1, lexeme.length()-1);
+                lexeme = lexeme.substr(1, lexeme.length() - 1);
                 return Lex(STR, lexeme, linenum);
             }
 
@@ -217,15 +217,15 @@ Lex getNextToken(istream &in, int &linenum)
                 lexeme += '\n';
                 lexstate = IN_STRING;
             }
-                
+
             else
             {
                 lexeme += c;
                 lexstate = IN_STRING;
             }
-       
-        break;
-                
+
+            break;
+
         case IN_INTEGER:
             if (isdigit(c))
             {
@@ -254,7 +254,7 @@ Lex getNextToken(istream &in, int &linenum)
                 continue;
             }
             break;
-       }
+        }
     }
 
     if (in.eof())
