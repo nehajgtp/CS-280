@@ -4,7 +4,6 @@ using std::ifstream;
 #include <string>
 #include <iterator>
 #include <map>
-#include <bits/stdc++.h>
 #include <vector>
 #include <algorithm>
 #include "lex.h"
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
             vflag = true;
         else if (arg == "-ids")
             idsflag = true;
-        else if (arg == "-consts") 
+        else if (arg == "-consts")
             constsflag = true;
         else if (arg[0] == '-')
         {
@@ -70,7 +69,7 @@ int main(int argc, char *argv[])
 
         while (((l = getNextToken(*in, lineNumber)).GetToken()) != DONE && l != ERR)
         {
-            
+
             if (vflag)
             {
                 cout << l << endl;
@@ -84,24 +83,26 @@ int main(int argc, char *argv[])
                     iden_count++;
                 }
             }
-            
-            if (constsflag) {
-                if (l.GetToken() == STR) {
+
+            if (constsflag)
+            {
+                if (l.GetToken() == STR)
+                {
                     constslabel_str = true;
                     strings.push_back(l.GetLexeme());
                 }
-                
-                if (l.GetToken() == INT) { 
+
+                if (l.GetToken() == INT)
+                {
                     constslabel_int = true;
                     integers.push_back(l.GetLexeme());
                 }
-                
             }
         }
 
         sort(integers.begin(), integers.end(), greater<string>());
         sort(strings.begin(), strings.end());
-        
+
         if (idsflag == true && iden_count > 0)
         {
             cout << iden;
@@ -112,25 +113,26 @@ int main(int argc, char *argv[])
                 cout << ", " << it->first;
             cout << endl;
         }
-        
 
         if (l.GetToken() == ERR)
         {
-            cout << "Error on line " << (l.GetLinenum() +1) << " (" << l.GetLexeme() << ")" << endl;
+            cout << "Error on line " << (l.GetLinenum() + 1) << " (" << l.GetLexeme() << ")" << endl;
         }
 
-        if (constslabel_str && l.GetToken() == DONE) {
+        if (constslabel_str && l.GetToken() == DONE)
+        {
             cout << "STRINGS:" << endl;
-            for (string x : strings) 
+            for (string x : strings)
                 cout << x << endl;
         }
-        
-        if (constslabel_int && l.GetToken() == DONE) {
-            cout << "INTEGERS:" << endl; 
-            for (auto y : integers) 
+
+        if (constslabel_int && l.GetToken() == DONE)
+        {
+            cout << "INTEGERS:" << endl;
+            for (auto y : integers)
                 cout << y << endl;
         }
-        
+
         if (l.GetToken() == DONE)
         {
             cout << "Lines: " << l.GetLinenum() << endl;
